@@ -13,6 +13,9 @@ using namespace std;
 
 /**
 Double linked list node.
+    element
+    prev
+    next
 */
 template <class T>
 struct doubleLinkedChainNode : chainNode<T>
@@ -32,6 +35,11 @@ struct doubleLinkedChainNode : chainNode<T>
 
 };
 
+/**
+Double linked list.
+    head
+    tail
+*/
 template<class T>
 class circularListWithHeader 
 {
@@ -46,6 +54,10 @@ class circularListWithHeader
       void output(ostream& out) const;
       chainNode<T>* remove(int index);
 
+      /**
+      Iterator inline class.
+
+      */
       class Iterator
       {
       public:
