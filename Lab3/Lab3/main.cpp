@@ -6,6 +6,7 @@
 
 const int AMOUNT = 10;
 const int POPULATION_SIZE = 32;
+const int MATRIX_SIZE = 10;
 
 /*
 TODO :
@@ -15,6 +16,7 @@ TODO :
 
 int main(int argc, char const* argv[])
 {
+    // 1. Monkey election.
     int x = 1337;
 
     // ArrayList approach. Here operator % is being used to calculate indexes.
@@ -72,6 +74,20 @@ int main(int argc, char const* argv[])
     //} while (chain->size() != 0);
 
     delete chain;
+
+    // 2. Matrix.
+
+    int** matrix;
+
+    matrix = new int* [MATRIX_SIZE];
+    for (int i = 0; i < MATRIX_SIZE; i++)
+    {
+        matrix[i] = new int[MATRIX_SIZE];
+        for (int j = 0; j < MATRIX_SIZE; j++)
+            matrix[i][j] = (int)rand() * 10;
+    }
+
+
 
     return 0;
 }

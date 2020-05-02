@@ -4,7 +4,7 @@
 #define chainNode_
 
 template <class T>
-struct chainNode 
+class chainNode 
 {
    // data members
    T element;
@@ -13,7 +13,7 @@ struct chainNode
    // methods
    chainNode() {}
    chainNode(const T& element)
-      {this->element = element;}
+      { this->element = element; }
    chainNode(const T& element, chainNode<T>* next)
       {this->element = element;
        this->next = next;}

@@ -20,19 +20,19 @@ Double linked list node.
 template <class T>
 struct doubleLinkedChainNode : chainNode<T>
 {
-    doubleLinkedChainNode* prev;
+    T element;
+    doubleLinkedChainNode<T> *prev, *next;
     
-    // methods
     doubleLinkedChainNode()
     {
         next = nullptr;
         prev = nullptr;
     }
-    doubleLinkedChainNode(
-        const T& element,
-        doubleLinkedChainNode<T>* prev,
-        doubleLinkedChainNode<T>* next) : element(element), prev(prev), next(next) { }
 
+    doubleLinkedChainNode(
+        const T& _element,
+        doubleLinkedChainNode<T>* _prev,
+        doubleLinkedChainNode<T>* _next) : element(_element), next(_next), prev(_prev) { }
 };
 
 /**
@@ -56,7 +56,6 @@ class circularListWithHeader
 
       /**
       Iterator inline class.
-
       */
       class Iterator
       {
@@ -103,14 +102,14 @@ class circularListWithHeader
       }
       Iterator end()
       {
-          return Iterator(tail->prev);
+          return Iterator(tailNode->prev);
       }
 
    protected:
       void checkIndex(int theIndex) const;
-            // throw illegalIndex if theIndex invalid
+      // throw illegalIndex if theIndex invalid
       chainNode<T>* headerNode;  // pointer to header node
-      doubleLinkedChainNode<T>* head, tail;
+      doubleLinkedChainNode<T>* headNode, tailNode;
       int listSize;              // number of elements in list
 };
 
