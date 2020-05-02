@@ -11,12 +11,20 @@
 
 using namespace std;
 
+/**
+Double linked list node.
+*/
 template <class T>
 struct doubleLinkedChainNode : chainNode<T>
 {
     doubleLinkedChainNode* prev;
     
     // methods
+    doubleLinkedChainNode()
+    {
+        next = nullptr;
+        prev = nullptr;
+    }
     doubleLinkedChainNode(
         const T& element,
         doubleLinkedChainNode<T>* prev,
@@ -81,11 +89,16 @@ class circularListWithHeader
       {
           return Iterator(headerNode);
       }
+      Iterator end()
+      {
+          return Iterator(tail->prev);
+      }
 
    protected:
       void checkIndex(int theIndex) const;
             // throw illegalIndex if theIndex invalid
       chainNode<T>* headerNode;  // pointer to header node
+      doubleLinkedChainNode<T>* head, tail;
       int listSize;              // number of elements in list
 };
 
