@@ -145,6 +145,8 @@
     <ClInclude Include="chainNode.h" />
     <ClInclude Include="circularListWithHeader.h" />
     <ClInclude Include="CycledChain.h" />
+    <ClInclude Include="hash.h" />
+    <ClInclude Include="hashTable.h" />
     <ClInclude Include="LinearList.h" />
     <ClInclude Include="myExceptions.h" />
   </ItemGroup>

@@ -28,7 +28,7 @@ class hashTable
    protected:
       int search(const K&) const;
       pair<const K, E>** table;  // hash table
-      hash<K> hash;              // maps type K to nonnegative integer
+      hashF<K> _hash;              // maps type K to nonnegative integer
       int dSize;                 // number of pairs in dictionary
       int divisor;               // hash function divisor
 };
@@ -52,7 +52,7 @@ int hashTable<K,E>::search(const K& theKey) const
  // location where a pair with key theKey may be inserted
  // provided the hash table is not full.
 
-   int i = (int) hash(theKey) % divisor;  // home bucket
+   int i = (int) _hash(theKey) % divisor;  // home bucket
    int j = i;    // start at home bucket
    do
    {

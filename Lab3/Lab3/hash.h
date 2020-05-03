@@ -10,10 +10,10 @@
 
 using namespace std;
 
-template <class K> class hash;
+template <class K> class hashF;
 
 template<>
-class hash<string>
+class hashF<string>
 {
    public:
       size_t operator()(const string theKey) const
@@ -28,7 +28,7 @@ class hash<string>
 };
 
 template<>
-class hash<int>
+class hashF<int>
 {
    public:
       size_t operator()(const int theKey) const
@@ -36,7 +36,7 @@ class hash<int>
 };
 
 template<>
-class hash<long>
+class hashF<long>
 {
    public:
       size_t operator()(const long theKey) const

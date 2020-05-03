@@ -41,6 +41,12 @@
     <ClInclude Include="myExceptions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="hashTable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="hash.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="circularListWithHeader.output">

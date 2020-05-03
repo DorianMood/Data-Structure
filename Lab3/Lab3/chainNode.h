@@ -6,6 +6,7 @@
 template <class T>
 class chainNode 
 {
+public:
    // data members
    T element;
    chainNode<T> *next;
