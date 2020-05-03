@@ -5,6 +5,7 @@
 #include "circularListWithHeader.h"
 #include "hashTable.h"
 #include <map>
+#include <list>
 
 const int AMOUNT = 10;
 const int POPULATION_SIZE = 32;
@@ -24,12 +25,12 @@ int main(int argc, char const* argv[])
     // ArrayList approach. Here operator % is being used to calculate indexes.
     // Current element index is being cycled by modulo SIZE.
 
-    ArrayList<int> *list = new ArrayList<int>();
+    ArrayList<int> *arrayList = new ArrayList<int>();
 
     // Generate monkeys.
     for (int i = 0; i < POPULATION_SIZE; i++)
     {
-        list->insert(i, i);
+        arrayList->insert(i, i);
     }
 
     // Set p number.
@@ -37,45 +38,52 @@ int main(int argc, char const* argv[])
     int index;
 
     // Perform election.
-    while (list->size() > 1)
+    while (arrayList->size() > 1)
     {
         index = p - 1;
-        index %= list->size();
-        list->erase(index);
+        index %= arrayList->size();
+        arrayList->erase(index);
     }
 
-    cout << list->get(0) << endl;
+    cout << arrayList->get(0) << endl;
 
-    delete list;
+    delete arrayList;
 
 
     // CycledChain approach. Here chain is cycled by itself.
     // All we need is just iterate over chain till SIZE = 1.
 
-    circularListWithHeader<int>* chain = new circularListWithHeader<int>();
+    std::list<int> chain;
 
-    for (int i = 0; i < 3; i++)
-    {
-        chain->insert(i, i);
-    }
+    for (int i = 0; i < POPULATION_SIZE; i++)
+        chain.push_back(i);
 
-    circularListWithHeader<int>::Iterator iterator = chain->begin();
+    
 
-    for (circularListWithHeader<int>::Iterator it = chain->begin(); it != chain->head(); it++)
-    {
-        cout << *it << endl;
-    }
+    //circularListWithHeader<int>* chain = new circularListWithHeader<int>();
 
-    //do
+    //for (int i = 0; i < 3; i++)
     //{
-    //    // Make p steps.
-    //    for (int i = 0; i < p - 1; i++) iterator++;
-    //    // save value.
-    //    x = *iterator;
-    //    // TODO : continue from here.
-    //} while (chain->size() != 0);
+    //    chain->insert(i, i);
+    //}
 
-    delete chain;
+    //circularListWithHeader<int>::Iterator iterator = chain->begin();
+
+    //for (circularListWithHeader<int>::Iterator it = chain->begin(); it != chain->head(); it++)
+    //{
+    //    cout << *it << endl;
+    //}
+
+    ////do
+    ////{
+    ////    // Make p steps.
+    ////    for (int i = 0; i < p - 1; i++) iterator++;
+    ////    // save value.
+    ////    x = *iterator;
+    ////    // TODO : continue from here.
+    ////} while (chain->size() != 0);
+
+    //delete chain;
 
     // TASK 2. Matrix.
 
