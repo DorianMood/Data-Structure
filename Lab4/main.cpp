@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include <list>
+#include <map>
 
 int main()
 {
@@ -10,26 +11,35 @@ int main()
 	int rowLength = 0;
 
 	std::list<int*> matrix;
+	std::map<const std::pair<int, int>, int> cells;
 
 	std::string line;
 	while (std::getline(f, line))
 	{
-		if (!rowLength)
-			rowLength = std::count(line.begin(), line.end(), ',') + 1;
-		int* row = new int[rowLength];
+		int x, y;
+		int numberIndex = 0;
 
 		std::string tmp = "";
 		int index = 0;
 		for (std::string::iterator it = line.begin(); it != line.end(); it++)
 		{
-			if ((*it) >= '1' && (*it) <= '9')
-				tmp += *it;
-			else
+			if (*it < '0' || *it > '9')
+				continue;
+
+			tmp += *it;
+			switch (numberIndex++)
 			{
-				row[index] = std::stoi(tmp);
-				matrix.push_back(row);
-				tmp = "";
+			case 0:
+				x = std::stoi(tmp);
+			case 1:
+				y = std::stoi(tmp);
+			case 2:
+				const std::pair<int, int> coords = std::make_pair(x, y);
+				cells.insert(std::make_pair(coords, std::stoi(tmp)));
+			default:
+				break;
 			}
+			tmp = "";
 		}
 	}
 

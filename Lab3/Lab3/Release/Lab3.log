@@ -1,0 +1,7 @@
+﻿  main.cpp
+D:\Documents\STUDY\DataStructure\homework\Data Structure\Lab3\Lab3\main.cpp(118,57): warning C4018: '<': signed/unsigned mismatch
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 302 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  Lab3.vcxproj -> D:\Documents\STUDY\DataStructure\homework\Data Structure\Release\Lab3.exe
