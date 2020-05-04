@@ -150,9 +150,6 @@
     <ClInclude Include="LinearList.h" />
     <ClInclude Include="myExceptions.h" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="circularListWithHeader.output" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
