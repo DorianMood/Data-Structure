@@ -6,6 +6,7 @@ int main()
 {
 	std::ifstream f("data.txt", std::ifstream::in);
 
+
 	std::string line;
 	while (std::getline(f, line))
 	{
