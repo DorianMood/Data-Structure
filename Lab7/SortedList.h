@@ -73,6 +73,16 @@ template <class K, class E>
 void SortedList<K, E>::Insert(const pair<const K, E>& item)
 {
     // Insert to the correct position
+    if ()
+    {
+        capacity *= 2;
+        // Recreate array
+        std::pair<K, E> newX = new std::pair<K, E>[capacity];
+        // Copy all the data
+
+    }
+
+    
 
     return;
 }
@@ -82,7 +92,7 @@ void SortedList<K, E>::Output(std::ostream& out) const
 {
     for (int i = 0; i < size; i++)
     {
-        std::cout << x[i]->second << " ";
+        std::cout << x[i].second << " ";
     }
     std::cout << std::endl;
 }
