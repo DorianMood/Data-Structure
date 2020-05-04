@@ -3,21 +3,24 @@
 
 #include <iostream>
 
-template <class T>
-class SortedList
+#include "Dictionary.h"
+
+template <class K, class E>
+class SortedList : Dictionary<K, E>
 {
 public:
-    SortedList() { first = 0; }
+    SortedList();
     ~SortedList();
 
-    int Length() const { return size == 0; };
-    bool Search(const T& e) const;
-    SortedList<T>& Delete(int i);
-    SortedList<T>& Insert(const T& e);
+    bool Empty() const { return size == 0; }
+    int Size() const { return size; };
+    std::pair<const K, E>* Find(const K& e) const;
+    void Erase(const K& key);
+    void Insert(const std::pair<const K, E>&);
     void Output(std::ostream& out) const;
 
 private:
-    int* x;
+    std::pair<const K, E>* x;
     int size;
     int capacity;
 
@@ -25,47 +28,61 @@ private:
 
 };
 
-template <class T>
-SortedList<T>::SortedList()
+template <class K, class E>
+SortedList<K, E>::SortedList()
 {
     capacity = INITIAL_CAPACITY;
-    x = new int[capacity];
+    x = new std::pair<const K, E>[capacity];
     size = 0;
 }
 
-template <class T>
-SortedList<T>::~SortedList()
+template <class K, class E>
+SortedList<K, E>::~SortedList()
 {
     delete[] x;
 }
 
-template <class T>
-bool SortedList<T>::Search(const T& e) const
+template <class K, class E>
+std::pair<const K, E>* SortedList<K, E>::Find(const K& e) const
 {
     // We can use binary search
-    return false;
+    int left = 0, right = size - 1;
+    while (left <= right)
+    {
+        int middle = (left + right) / 2;
+        if (x[middle].second < e)
+            left = middle + 1;
+        else if (x[middle].second > e)
+            right = middle - 1;
+        else
+            return &x[middle];
+    }
+
+    return nullptr;
 }
 
-template <class T>
-SortedList<T>& SortedList<T>::Delete(int i)
+template <class K, class E>
+void SortedList<K, E>::Erase(const K& key)
 {
     // Delete from correct position
-    return this;
+
+    return;
 }
 
-template <class T>
-SortedList<T>& SortedList<T>::Insert(const T& value)
+template <class K, class E>
+void SortedList<K, E>::Insert(const pair<const K, E>& item)
 {
     // Insert to the correct position
-    return this;
+
+    return;
 }
 
-template <class T>
-void SortedList<T>::Output(std::ostream& out) const
+template <class K, class E>
+void SortedList<K, E>::Output(std::ostream& out) const
 {
     for (int i = 0; i < size; i++)
     {
-        std::cout << x[i] << " ";
+        std::cout << x[i]->second << " ";
     }
     std::cout << std::endl;
 }

@@ -1,5 +1,7 @@
 #include <iostream>
 
+#include "SortedList.h"
+
 int main()
 {
     /**
@@ -7,5 +9,5 @@ int main()
     Provide the same member functions as provided the class SortedChain .
     Write code for all functions and test the code using suitable test data.
     */
-
+    SortedList<int, int>* list = new SortedList<int, int>();
 }
