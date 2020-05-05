@@ -10,24 +10,22 @@ int main()
 
 	int rowLength = 0;
 
-	std::list<int*> matrix;
 	std::map<const std::pair<int, int>, int> cells;
 
 	std::string line;
 	while (std::getline(f, line))
 	{
 		int x, y;
-		int numberIndex = 0;
+		int index = 0;
 
 		std::string tmp = "";
-		int index = 0;
 		for (std::string::iterator it = line.begin(); it != line.end(); it++)
 		{
 			if (*it < '0' || *it > '9')
 			{
 				if (tmp != "")
 				{
-					switch (numberIndex++)
+					switch (index++)
 					{
 					case 0:
 						x = std::stoi(tmp);
@@ -50,8 +48,18 @@ int main()
 		}
 		cells.insert(std::make_pair(std::make_pair(x, y), std::stoi(tmp)));
 	}
-
 	// Calculate addition and transpose of given matrix
+
+	for (const auto cell : cells)
+	{
+		std::cout << cell.first.first << " " << cell.first.second << " " << cell.second << std::endl;
+	}
+	
+	// Addition
+
+
+	std::map<const std::pair<int, int>, int> transpose;
+	// Transpose
 
 	return 0;
 }
