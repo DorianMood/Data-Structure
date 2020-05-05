@@ -4,6 +4,14 @@
 #include <list>
 #include <map>
 
+void display(std::map<const std::pair<int, int>, int>& cells)
+{
+	for (const auto cell : cells)
+	{
+		std::cout << cell.first.first << " " << cell.first.second << " " << cell.second << std::endl;
+	}
+}
+
 int main()
 {
 	std::ifstream f("data.txt", std::ifstream::in);
@@ -50,16 +58,23 @@ int main()
 	}
 	// Calculate addition and transpose of given matrix
 
-	for (const auto cell : cells)
-	{
-		std::cout << cell.first.first << " " << cell.first.second << " " << cell.second << std::endl;
-	}
+	display(cells);
 	
 	// Addition
 
 
-	std::map<const std::pair<int, int>, int> transpose;
+
 	// Transpose
+
+	std::map<const std::pair<int, int>, int> transpose;
+
+	for (auto cell : cells)
+	{
+		transpose.insert(std::make_pair(std::make_pair(cell.first.second, cell.first.first), cell.second));
+	}
+
+	display(transpose);
+
 
 	return 0;
 }
