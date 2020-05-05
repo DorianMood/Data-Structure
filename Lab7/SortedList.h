@@ -2,6 +2,7 @@
 #define SORTED_LIST_
 
 #include <iostream>
+#include <map>
 
 #include "Dictionary.h"
 
@@ -20,6 +21,8 @@ public:
     void Output(std::ostream& out) const;
 
 private:
+    std::map<const K, E> elements;
+
     std::pair<const K, E>* x;
     int size;
     int capacity;
@@ -45,6 +48,7 @@ SortedList<K, E>::~SortedList()
 template <class K, class E>
 std::pair<const K, E>* SortedList<K, E>::Find(const K& e) const
 {
+    // TODO : rewrite for std::map
     // We can use binary search
     int left = 0, right = size - 1;
     while (left <= right)
@@ -65,7 +69,7 @@ template <class K, class E>
 void SortedList<K, E>::Erase(const K& key)
 {
     // Delete from correct position
-
+    elements.erase(key);
     return;
 }
 
@@ -73,7 +77,7 @@ template <class K, class E>
 void SortedList<K, E>::Insert(const pair<const K, E>& item)
 {
     // Insert to the correct position
-
+    elements.insert(item);
     return;
 }
 
@@ -82,7 +86,7 @@ void SortedList<K, E>::Output(std::ostream& out) const
 {
     for (int i = 0; i < size; i++)
     {
-        std::cout << x[i]->second << " ";
+        std::cout << elements[i]->first << " " << elements[i]->second << "\t";
     }
     std::cout << std::endl;
 }
