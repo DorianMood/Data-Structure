@@ -24,24 +24,34 @@ int main()
 		for (std::string::iterator it = line.begin(); it != line.end(); it++)
 		{
 			if (*it < '0' || *it > '9')
+			{
+				if (tmp != "")
+				{
+					switch (numberIndex++)
+					{
+					case 0:
+						x = std::stoi(tmp);
+						break;
+					case 1:
+						y = std::stoi(tmp);
+						break;
+					case 2:
+						cells.insert(std::make_pair(std::make_pair(x, y), std::stoi(tmp)));
+						break;
+					default:
+						break;
+					}
+					tmp = "";
+				}
 				continue;
+			}
 
 			tmp += *it;
-			switch (numberIndex++)
-			{
-			case 0:
-				x = std::stoi(tmp);
-			case 1:
-				y = std::stoi(tmp);
-			case 2:
-				const std::pair<int, int> coords = std::make_pair(x, y);
-				cells.insert(std::make_pair(coords, std::stoi(tmp)));
-			default:
-				break;
-			}
-			tmp = "";
 		}
+		cells.insert(std::make_pair(std::make_pair(x, y), std::stoi(tmp)));
 	}
 
 	// Calculate addition and transpose of given matrix
+
+	return 0;
 }
