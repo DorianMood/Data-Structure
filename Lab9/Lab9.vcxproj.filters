@@ -38,5 +38,11 @@
     <ClInclude Include="swap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="linkedQueue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="chainNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

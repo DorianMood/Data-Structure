@@ -150,7 +150,9 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="chainNode.h" />
     <ClInclude Include="HBLTNode.h" />
+    <ClInclude Include="linkedQueue.h" />
     <ClInclude Include="MaxHBLT.h" />
     <ClInclude Include="MaxHeap.h" />
     <ClInclude Include="myExceptions.h" />
