@@ -58,32 +58,7 @@ int main(int argc, char const* argv[])
     for (int i = 0; i < POPULATION_SIZE; i++)
         chain.push_back(i);
 
-    
-
-    //circularListWithHeader<int>* chain = new circularListWithHeader<int>();
-
-    //for (int i = 0; i < 3; i++)
-    //{
-    //    chain->insert(i, i);
-    //}
-
-    //circularListWithHeader<int>::Iterator iterator = chain->begin();
-
-    //for (circularListWithHeader<int>::Iterator it = chain->begin(); it != chain->head(); it++)
-    //{
-    //    cout << *it << endl;
-    //}
-
-    ////do
-    ////{
-    ////    // Make p steps.
-    ////    for (int i = 0; i < p - 1; i++) iterator++;
-    ////    // save value.
-    ////    x = *iterator;
-    ////    // TODO : continue from here.
-    ////} while (chain->size() != 0);
-
-    //delete chain;
+    // I do need to implement cycled chain by byself. There's no such STL container.
 
     // TASK 2. Matrix.
 

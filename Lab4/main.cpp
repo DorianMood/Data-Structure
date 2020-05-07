@@ -60,9 +60,8 @@ int main()
 
 	display(cells);
 	
-	// Addition
-
-
+	// Multiplication of given matrix and its transpose
+	// M * T(M)
 
 	// Transpose
 
@@ -75,6 +74,12 @@ int main()
 
 	display(transpose);
 
+	// Multiply matrix and transpose.
+
+	for (auto cell : cells)
+	{
+
+	}
 
 	return 0;
 }
