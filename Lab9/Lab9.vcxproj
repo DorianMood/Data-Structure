@@ -150,8 +150,12 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="HBLTNode.h" />
+    <ClInclude Include="MaxHBLT.h" />
     <ClInclude Include="MaxHeap.h" />
     <ClInclude Include="myExceptions.h" />
+    <ClInclude Include="queue.h" />
+    <ClInclude Include="swap.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

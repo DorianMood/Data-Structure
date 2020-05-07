@@ -26,5 +26,17 @@
     <ClInclude Include="myExceptions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="HBLTNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MaxHBLT.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="queue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="swap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
