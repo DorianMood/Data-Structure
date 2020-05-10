@@ -183,7 +183,7 @@ void CycledChain<T>::Output(std::ostream& out) const
 template <class T>
 int CycledChain<T>::Elect(const int steps)
 {
-	Node<T>* current = head->next;
+	Node<T>* current = head;
 
 	while (size > 1)
 	{
@@ -191,9 +191,8 @@ int CycledChain<T>::Elect(const int steps)
 		for (int i = 0; i < steps; i++)
 		{
 			// Make cycle
-			current = current->next ? current->next : head->next;
+			current = current->next == tail ? head->next : current->next;
 		}
-		std::cout << current->data << " ";
 		// remove element
 		Delete(current);
 	}

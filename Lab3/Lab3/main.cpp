@@ -20,6 +20,8 @@ int main(int argc, char const* argv[])
 {
     // TASK 1. Monkey election.
     int x = 1337;
+    // Set p number.
+    int p = 16;
 
     // ArrayList approach. Here operator % is being used to calculate indexes.
     // Current element index is being cycled by modulo SIZE.
@@ -32,25 +34,9 @@ int main(int argc, char const* argv[])
         arrayList->insert(i, i);
     }
 
-    arrayList->output(std::cout);
-
-    // Set p number.
-    int p = 16;
-    int index;
-
-    // Perform election.
-    while (arrayList->size() > 1)
-    {
-        index = p - 1;
-        index %= arrayList->size();
-        arrayList->erase(index);
-        cout << index << " ";
-    }
-
-    cout << arrayList->get(0) << endl;
+    cout << arrayList->elect(p) << endl;
 
     delete arrayList;
-
 
     // CycledChain approach. Here chain is cycled by itself.
     // All we need is just iterate over chain till SIZE = 1.
@@ -60,9 +46,9 @@ int main(int argc, char const* argv[])
     for (int i = 0; i < POPULATION_SIZE; i++)
         chain->Insert(i, i);
 
-    chain->Output(std::cout);
-
     cout << chain->Elect(p) << endl;
+
+    delete chain;
 
     // TASK 2. Matrix.
 
