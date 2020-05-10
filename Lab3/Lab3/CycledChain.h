@@ -30,8 +30,12 @@ public:
     bool Find(int index, T& item) const;
     int Search(const T& item) const;
     CycledChain<T>& Delete(int at, T& item);
+    CycledChain<T>& Delete(Node<T>* item);
     CycledChain<T>& Insert(int after, const T& item);
     void Output(std::ostream &out) const;
+
+    // Monkey king election
+    int Elect(const int steps) const;
 };
 
 template<typename T>
@@ -118,6 +122,12 @@ CycledChain<T>& CycledChain<T>::Delete(int at, T& item)
     return *this;
 }
 
+template <class T>
+CycledChain<T>& CycledChain<T>::Delete(Node<T>* element)
+{
+    return *this;
+}
+
 template <typename T>
 CycledChain<T>& CycledChain<T>::Insert(int at, const T& data)
 {
@@ -161,6 +171,24 @@ void CycledChain<T>::Output(std::ostream &out) const
         node = node->next;
     }
     out << std::endl;
+}
+
+template <class T>
+int CycledChain<T>::Elect(const int steps) const
+{
+    Node<T>* current = head->next;
+    while (size > 1)
+    {
+        // Count steps
+        for (int i = 0; i < steps; i++)
+        {
+            // Make cycle
+            current = current->next ? current->next : head->next;
+        }
+        // remove element
+
+    }
+    return current->element;
 }
 
 #endif
