@@ -34,6 +34,8 @@ public:
     void insert(int theIndex, const T& theElement);
     void output(ostream& out) const;
 
+    int elect(const int step);
+
     // additional method
     int capacity() const { return arrayLength; }
 
@@ -151,7 +153,8 @@ void ArrayList<T>::insert(int theIndex, const T& theElement)
 template <class T>
 void ArrayList<T>::output(ostream& out) const
 { // Put the list into the stream out.
-    copy(element, element + listSize, ostream_iterator<T>(cout, "  "));
+    copy(element, element + listSize, ostream_iterator<T>(cout, " "));
+    out << std::endl;
 }
 
 // overload <<
@@ -160,6 +163,22 @@ ostream& operator<<(ostream& out, const ArrayList<T>& x)
 {
     x.output(out);
     return out;
+}
+
+template <class T>
+int ArrayList<T>::elect(const int steps)
+{
+    int index = 0;
+
+    // Perform election.
+    while (this->size() > 1)
+    {
+        index += steps - 1;
+        index %= this->size();
+        this->erase(index);
+    }
+
+    return this->get(0);
 }
 
 #endif
