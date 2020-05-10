@@ -32,6 +32,8 @@ int main(int argc, char const* argv[])
         arrayList->insert(i, i);
     }
 
+    arrayList->output(std::cout);
+
     // Set p number.
     int p = 16;
     int index;
@@ -42,6 +44,7 @@ int main(int argc, char const* argv[])
         index = p - 1;
         index %= arrayList->size();
         arrayList->erase(index);
+        cout << index << " ";
     }
 
     cout << arrayList->get(0) << endl;
@@ -59,12 +62,7 @@ int main(int argc, char const* argv[])
 
     chain->Output(std::cout);
 
-    chain->Find(1, x);
-    
-    chain->Delete(9, x);
-    chain->Delete(0, x);
-
-    chain->Output(std::cout);
+    cout << chain->Elect(p) << endl;
 
     // TASK 2. Matrix.
 
