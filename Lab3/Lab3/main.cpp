@@ -2,7 +2,6 @@
 
 #include "CycledChain.h"
 #include "ArrayList.h"
-#include "circularListWithHeader.h"
 #include "hashTable.h"
 #include <map>
 #include <list>
@@ -53,12 +52,14 @@ int main(int argc, char const* argv[])
     // CycledChain approach. Here chain is cycled by itself.
     // All we need is just iterate over chain till SIZE = 1.
 
-    std::list<int> chain;
+    CycledChain<int>* chain = new CycledChain<int>();
 
     for (int i = 0; i < POPULATION_SIZE; i++)
-        chain.push_back(i);
+        chain->Insert(i, i);
 
-    // I do need to implement cycled chain by byself. There's no such STL container.
+    chain->Output(std::cout);
+
+    chain->Find(1, x);
 
     // TASK 2. Matrix.
 

@@ -2,12 +2,15 @@
 #define _CHAIN_H_
 
 #include <stdexcept>
+#include <iostream>
+#include <ostream>
 
 template <typename T>
 struct Node
 {
     T data;
     struct Node* next;
+    struct Node* prev; // TODO : Add this pointer to the collection
 };
 
 template <typename T>
@@ -15,6 +18,7 @@ class CycledChain
 {
 private:
     Node<T>* head;
+    Node<T>* tail; // TODO : Add this to the structure.
     int size;
 
 public:
@@ -27,7 +31,7 @@ public:
     int Search(const T& item) const;
     CycledChain<T>& Delete(int at, T& item);
     CycledChain<T>& Insert(int after, const T& item);
-    //void Output(ostream &out) const;
+    void Output(std::ostream &out) const;
 };
 
 template<typename T>
@@ -35,6 +39,10 @@ CycledChain<T>::CycledChain()
 {
     head = new Node<T>();
     head->next = nullptr;
+
+    tail = new Node<T>();
+    tail->prev = nullptr;
+
     size = 0;
 }
 
@@ -53,9 +61,14 @@ CycledChain<T>::~CycledChain()
 template <typename T>
 bool CycledChain<T>::Find(int index, T& item) const
 {
-    if (index < 0 || size < 1)
+    if (index < 0 || size < 1 || index >= size)
         return false;
-    // TODO : implement
+    
+    Node<T>* current = head->next;
+    for (int i = 0; i < size && i <= index; i++, current = current->next)
+    {
+        item = current->data;
+    }
     return true;
 }
 
@@ -100,12 +113,35 @@ CycledChain<T>& CycledChain<T>::Insert(int at, const T& data)
     for (int i = 0; i < at; i++)
         insertAfter = insertAfter->next;
 
+    
+    // insertAfter -> node -> tmp
     Node<T>* tmp = insertAfter->next;
     insertAfter->next = node;
     node->next = tmp;
+
+    // insertAfter <- node <- tmp
+    if (tmp)
+        tmp->prev = node;
+    if (insertAfter != head)
+        node->prev = insertAfter;
+
+    // TODO : do we need tail node at all?
+
     size++;
 
     return *this;
+}
+
+template <class T>
+void CycledChain<T>::Output(std::ostream &out) const
+{
+    Node<T>* node = head->next;
+    while (node)
+    {
+        out << node->data << " ";
+        node = node->next;
+    }
+    out << std::endl;
 }
 
 #endif
