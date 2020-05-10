@@ -43,6 +43,9 @@ CycledChain<T>::CycledChain()
     tail = new Node<T>();
     tail->prev = nullptr;
 
+    head->next = tail;
+    tail->prev = head;
+
     size = 0;
 }
 
@@ -96,6 +99,21 @@ CycledChain<T>& CycledChain<T>::Delete(int at, T& item)
 
     // TODO : implement
 
+    Node<T>* nextDelete = head, *prevDelete, *nodeDelete;
+    for (int i = 0; i < at; i++)
+        nextDelete = nextDelete->next;
+
+    nodeDelete = nextDelete->next;
+    prevDelete = nodeDelete->next;
+
+    nextDelete->next = prevDelete;
+    if (prevDelete)
+        prevDelete->prev = nextDelete; // TODO : fix this. when I delete
+    else
+        tail->prev = nextDelete;
+
+    delete nodeDelete;
+    size--;
 
     return *this;
 }
@@ -115,15 +133,16 @@ CycledChain<T>& CycledChain<T>::Insert(int at, const T& data)
 
     
     // insertAfter -> node -> tmp
-    Node<T>* tmp = insertAfter->next;
+    Node<T>* insertBefore = insertAfter->next;
     insertAfter->next = node;
-    node->next = tmp;
 
     // insertAfter <- node <- tmp
-    if (tmp)
-        tmp->prev = node;
+    if (insertBefore)
+        insertBefore->prev = node;
     if (insertAfter != head)
         node->prev = insertAfter;
+    if (insertBefore != tail)
+        node->next = insertBefore;
 
     // TODO : do we need tail node at all?
 
@@ -136,7 +155,7 @@ template <class T>
 void CycledChain<T>::Output(std::ostream &out) const
 {
     Node<T>* node = head->next;
-    while (node)
+    for (int i = 0; i < size; i++)
     {
         out << node->data << " ";
         node = node->next;

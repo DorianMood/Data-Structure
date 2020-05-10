@@ -7,7 +7,7 @@
 #include <list>
 
 const int AMOUNT = 10;
-const int POPULATION_SIZE = 32;
+const int POPULATION_SIZE = 10;
 const int MATRIX_SIZE = 10;
 
 /*
@@ -60,6 +60,11 @@ int main(int argc, char const* argv[])
     chain->Output(std::cout);
 
     chain->Find(1, x);
+    
+    chain->Delete(9, x);
+    chain->Delete(0, x);
+
+    chain->Output(std::cout);
 
     // TASK 2. Matrix.
 
