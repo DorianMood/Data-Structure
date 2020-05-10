@@ -56,13 +56,11 @@ int main()
 		}
 		cells.insert(std::make_pair(std::make_pair(x, y), std::stoi(tmp)));
 	}
+
 	// Calculate addition and transpose of given matrix
 
 	display(cells);
 	
-	// Multiplication of given matrix and its transpose
-	// M * T(M)
-
 	// Transpose
 
 	std::map<const std::pair<int, int>, int> transpose;
@@ -74,12 +72,13 @@ int main()
 
 	display(transpose);
 
-	// Multiply matrix and transpose.
+	// Multiplication
 
-	for (auto cell : cells)
-	{
+	std::map<const std::pair<int, int>, int> multiplication;
 
-	}
+	// MUL = T * M
+
+	display(multiplication);
 
 	return 0;
 }
