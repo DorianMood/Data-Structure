@@ -44,5 +44,11 @@
     <ClInclude Include="chainNode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="MaxPriorityQueueList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MaxPriorityQueue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

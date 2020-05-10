@@ -9,6 +9,8 @@ template <class T>
 class MaxPriorityQueueList : maxPriorityQueue
 {
 public:
+	MaxPriorityQueue() {}
+
 
 private:
 
