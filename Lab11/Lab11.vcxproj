@@ -139,7 +139,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Lab11.cpp" />
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="arrayQueue.h" />
+    <ClInclude Include="binaryTree.h" />
+    <ClInclude Include="booster.h" />
+    <ClInclude Include="bsTree.h" />
+    <ClInclude Include="binaryTreeNode.h" />
+    <ClInclude Include="BST.h" />
+    <ClInclude Include="dictionary.h" />
+    <ClInclude Include="linkedBinaryTree.h" />
+    <ClInclude Include="myExceptions.h" />
+    <ClInclude Include="queue.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

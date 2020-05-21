@@ -1,6 +1,12 @@
 #include <iostream>
 
+#include "BST.h"
+
 int main()
 {
-    std::cout << "Hello World!\n";
+    binarySearchTree<int, int>* tree = new binarySearchTree<int, int>();
+
+
+
+    return 0;
 }
