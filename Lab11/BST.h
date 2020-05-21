@@ -26,7 +26,7 @@ public:
     void erase(const K& theKey);
 
     // additional method of bsTree
-    void ascend() { inOrderOutput(); }
+    void ascend() { this->inOrderOutput(); }
 
 private:
     binaryTreeNode<pair<const K, E>>* root;
