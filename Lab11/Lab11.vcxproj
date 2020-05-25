@@ -143,6 +143,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="arrayQueue.h" />
+    <ClInclude Include="binarySearchTreeWithVisit.h" />
     <ClInclude Include="binaryTree.h" />
     <ClInclude Include="booster.h" />
     <ClInclude Include="bsTree.h" />
