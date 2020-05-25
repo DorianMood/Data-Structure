@@ -125,7 +125,7 @@ template<class T>
 void MaxHeap<T>::Output() const
 {
     std::cout << "The " << CurrentSize << " elements are" << std::endl;
-    for (int i = 1; i <= CurrentSize; i++)
+    for (int i = 0; i < CurrentSize; i++)
         std::cout << heap[i] << ' ';
     std::cout << std::endl;
 }

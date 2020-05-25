@@ -147,15 +147,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ArrayList.h" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Chain.h" />
     <ClInclude Include="chainNode.h" />
     <ClInclude Include="HBLTNode.h" />
+    <ClInclude Include="LinearList.h" />
     <ClInclude Include="linkedQueue.h" />
     <ClInclude Include="MaxHBLT.h" />
     <ClInclude Include="MaxHeap.h" />
     <ClInclude Include="MaxPriorityQueue.h" />
+    <ClInclude Include="MaxPriorityQueueChain.h" />
     <ClInclude Include="MaxPriorityQueueList.h" />
     <ClInclude Include="myExceptions.h" />
     <ClInclude Include="queue.h" />
