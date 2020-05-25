@@ -2,13 +2,12 @@
 
 #include "CycledChain.h"
 #include "ArrayList.h"
-#include "circularListWithHeader.h"
 #include "hashTable.h"
 #include <map>
 #include <list>
 
 const int AMOUNT = 10;
-const int POPULATION_SIZE = 32;
+const int POPULATION_SIZE = 10;
 const int MATRIX_SIZE = 10;
 
 /*
@@ -21,6 +20,8 @@ int main(int argc, char const* argv[])
 {
     // TASK 1. Monkey election.
     int x = 1337;
+    // Set p number.
+    int p = 16;
 
     // ArrayList approach. Here operator % is being used to calculate indexes.
     // Current element index is being cycled by modulo SIZE.
@@ -33,57 +34,21 @@ int main(int argc, char const* argv[])
         arrayList->insert(i, i);
     }
 
-    // Set p number.
-    int p = 16;
-    int index;
-
-    // Perform election.
-    while (arrayList->size() > 1)
-    {
-        index = p - 1;
-        index %= arrayList->size();
-        arrayList->erase(index);
-    }
-
-    cout << arrayList->get(0) << endl;
+    cout << arrayList->elect(p) << endl;
 
     delete arrayList;
-
 
     // CycledChain approach. Here chain is cycled by itself.
     // All we need is just iterate over chain till SIZE = 1.
 
-    std::list<int> chain;
+    CycledChain<int>* chain = new CycledChain<int>();
 
     for (int i = 0; i < POPULATION_SIZE; i++)
-        chain.push_back(i);
+        chain->Insert(i, i);
 
-    
+    cout << chain->Elect(p) << endl;
 
-    //circularListWithHeader<int>* chain = new circularListWithHeader<int>();
-
-    //for (int i = 0; i < 3; i++)
-    //{
-    //    chain->insert(i, i);
-    //}
-
-    //circularListWithHeader<int>::Iterator iterator = chain->begin();
-
-    //for (circularListWithHeader<int>::Iterator it = chain->begin(); it != chain->head(); it++)
-    //{
-    //    cout << *it << endl;
-    //}
-
-    ////do
-    ////{
-    ////    // Make p steps.
-    ////    for (int i = 0; i < p - 1; i++) iterator++;
-    ////    // save value.
-    ////    x = *iterator;
-    ////    // TODO : continue from here.
-    ////} while (chain->size() != 0);
-
-    //delete chain;
+    delete chain;
 
     // TASK 2. Matrix.
 
