@@ -1,7 +1,8 @@
 #include <iostream>
 #include <algorithm>
+#include <map>
 
-#include "binarySearchTreeWithVisit.h"
+//#include "binarySearchTreeWithVisit.h"
 #include "BST.h"
 
 const int N = 10;
@@ -33,11 +34,21 @@ int main()
     // Sort this array
     sort(arr, arr + N);
 
+    std::map<int, int> frequencies;
+
     // Left-to-righ scan of the array
     for (int i = 0; i < N; i++)
     {
-
+        if (frequencies.find(arr[i]) == frequencies.end())
+            frequencies.insert(std::make_pair(arr[i], 0));
+        frequencies[arr[i]]++;
     }
+
+    for (auto element : frequencies)
+    {
+        std::cout << element.first << ":" << element.second << " ; ";
+    }
+    std::cout << std::endl;
 
     return 0;
 }
