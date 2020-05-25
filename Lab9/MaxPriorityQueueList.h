@@ -3,19 +3,17 @@
 
 #include <iostream>
 #include <stdexcept>
+#include <algorithm>
 
 #include "MaxPriorityQueue.h"
 #include "ArrayList.h"
 
 template <class T>
-class MaxPriorityQueueList : public maxPriorityQueue<T>
+class MaxPriorityQueueList : public maxPriorityQueue<T>, public ArrayList<T>
 {
 public:
-	MaxPriorityQueueList();
-	~MaxPriorityQueueList();
-
-	bool empty() const { return count == 0; }
-	int size() const { return count; }
+	bool empty() const { return this->listSize == 0; }
+	int size() const { return this->listSize; }
 
 	const T& top();
 	void pop();
@@ -23,53 +21,58 @@ public:
 
 	void output(ostream& out) const;
 
-private:
-	int count = 0;
-	ArrayList<T>* list;
-
 };
-
-template <class T>
-MaxPriorityQueueList<T>::MaxPriorityQueueList()
-{
-	list = new ArrayList<T>();
-	count = 0;
-}
-
-template <class T>
-MaxPriorityQueueList<T>::~MaxPriorityQueueList()
-{
-	count = 0;
-	delete list;
-}
 
 template <class T>
 const T& MaxPriorityQueueList<T>::top()
 {
-	if (count == 0)
+	if (this->listSize == 0)
 		throw queueEmpty();
-	T element = list->get(0);
-	return element;
+	
+	// Find max
+	T maxElement = this->element[0];
+	for (int i = 1; i < this->listSize; i++)
+	{
+		if (maxElement < this->element[i])
+		{
+			maxElement = this->element[i];
+		}
+	}
+	return maxElement;
 }
 
 template <class T>
 void MaxPriorityQueueList<T>::pop()
 {
-	list->erase(0);
-	count--;
+	// Find and delete max
+	int index = 0;
+	T maxElement = this->element[index];
+	for (int i = 0; i < this->listSize; i++)
+	{
+		if (maxElement < this->element[i])
+		{
+			maxElement = this->element[i];
+			index = i;
+		}
+	}
+	this->erase(index);
 }
 
 template <class T>
 void MaxPriorityQueueList<T>::push(const T& element)
 {
-	list->insert(count, element);
-	count++;
+	// Push elements on the right position
+	this->insert(this->listSize, element);
 }
 
 template <class T>
 void MaxPriorityQueueList<T>::output(ostream& out) const
 {
-	out << "Queue size : " << list->size() << std::endl;
-	list->output(out);
+	out << "Queue size : " << this->listSize << std::endl;
+	for (int i = 0; i < this->listSize; i++)
+	{
+		out << this->element[i] << " ";
+	}
+	out << std::endl;
 }
 #endif // !MAX_PRIORITY_QUEUE_
