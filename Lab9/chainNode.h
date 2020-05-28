@@ -8,13 +8,17 @@ struct chainNode
 {
 	// data members
 	T element;
-	chainNode<T>* next;
+	chainNode<T>* next = nullptr;
 
 	// methods
-	chainNode() {}
+	chainNode()
+	{
+		this->next = nullptr;
+	}
 	chainNode(const T& element)
 	{
 		this->element = element;
+		this->next = nullptr;
 	}
 	chainNode(const T& element, chainNode<T>* next)
 	{

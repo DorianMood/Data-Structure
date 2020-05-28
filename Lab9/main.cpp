@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "MaxPriorityQueueList.h"
+#include "MaxPriorityQueueChain.h"
 
 int main()
 {
@@ -17,18 +18,38 @@ int main()
 	MaxPriorityQueueList<int>* queue = new MaxPriorityQueueList<int>();
 
 	queue->push(1);
+	queue->output(std::cout);
 	queue->push(3);
+	queue->output(std::cout);
 	queue->push(2);
+	queue->output(std::cout);
 	queue->push(0);
 
-	std::cout << queue->top() << std::endl;
+	int top_value;
+	top_value = queue->top();
+	std::cout << "Top node : " << top_value << std::endl;
 	queue->pop();
-	std::cout << queue->top() << std::endl;
+	top_value = queue->top();
+	std::cout << "Top node : " << top_value << std::endl;
 
+	delete queue;
 
 	// 2. Unordered cahin approach
 
+	MaxPriorityQueueChain<int>* chainQueue = new MaxPriorityQueueChain<int>();
 
+	chainQueue->push(1);
+	chainQueue->push(3);
+	chainQueue->push(2);
+	chainQueue->push(0);
+
+	top_value = chainQueue->top();
+	std::cout << "Top node : " << top_value << std::endl;
+	chainQueue->pop();
+	top_value = chainQueue->top();
+	std::cout << "Top node : " << top_value << std::endl;
+
+	delete chainQueue;
 
 	return 0;
 }

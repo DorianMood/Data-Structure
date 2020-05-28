@@ -5,6 +5,7 @@
 #include <stdexcept>
 #include <algorithm>
 
+#include "myExceptions.h"
 #include "MaxPriorityQueue.h"
 #include "ArrayList.h"
 
@@ -28,7 +29,7 @@ const T& MaxPriorityQueueList<T>::top()
 {
 	if (this->listSize == 0)
 		throw queueEmpty();
-	
+
 	// Find max
 	T maxElement = this->element[0];
 	for (int i = 1; i < this->listSize; i++)
